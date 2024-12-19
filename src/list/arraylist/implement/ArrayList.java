@@ -6,13 +6,27 @@ public class ArrayList {
     private Object[] elements = new Object[size];
 
     public boolean add(Object element) {
-        if(!isEmpty()) return false;
+        if(isFull()) return false;
         elements[index++] = element;
         return true;
     }
 
-    public boolean isEmpty() {
-        return index < size;
+    public boolean add(Integer index, Object element) {
+        if(isFull()) return false;
+        for(int i = this.index; i > index; i--) {
+            elements[i] = elements[i-1];
+        }
+        elements[index] = element;
+        this.index++;
+        return true;
+    }
+
+    public boolean isFull() {
+        return index == size;
+    }
+
+    public boolean isEmpty(){
+        return index == 0;
     }
 
     @Override

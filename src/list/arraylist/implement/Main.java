@@ -10,5 +10,9 @@ public class Main {
 
         System.out.println("add(데이터)");
         System.out.println(list);
+
+        list.add(1,15);
+        System.out.println("add(인덱스, 데이터)");
+        System.out.println(list);
     }
 }
