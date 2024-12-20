@@ -1,13 +1,18 @@
 package list.arraylist.implement;
 
+/**
+ * 구현한 ArrayList의 기능을 확인하는 Main 클래스 
+ */
 public class Main {
     public static void main(String[] args) {
+        //ArrayList 객체 생성
         ArrayList list = new ArrayList();
+        
+        //데이터 추가
         list.add(10);
         list.add(20);
         list.add(30);
         list.add(40);
-
         System.out.println("add(데이터)");
         System.out.println(list);
 
