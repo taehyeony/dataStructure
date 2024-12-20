@@ -37,6 +37,21 @@ public class ArrayList {
     }
 
     /**
+     * 특정 위치의 요소를 삭제하는 함수
+     * @param index 요소를 삭제할 위치
+     * @return 삭제한 요소, 만약 삭제할 요소가 없으면 false 반환
+     */
+    public Object remove(Integer index) {
+        Object removedElement = elements[index];
+        if(this.index <= index) return false;
+        for(int i = index; i < this.index-1; i++) {
+            elements[i] = elements[i+1];
+        }
+        this.index--;
+        return removedElement;
+    }
+
+    /**
      * ArrayList가 가득 찼는지 확인하는 함수
      * @return ArrayList가 가득차면 true 아니면 false
      */

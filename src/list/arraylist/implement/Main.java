@@ -17,7 +17,12 @@ public class Main {
         System.out.println(list);
 
         list.add(1,15);
-        System.out.println("add(인덱스, 데이터)");
+        System.out.println("\nadd(인덱스, 데이터)");
+        System.out.println(list);
+        
+        //데이터 삭제
+        System.out.println("\nremove(인덱스)");
+        System.out.println(list.remove(2));
         System.out.println(list);
     }
 }
