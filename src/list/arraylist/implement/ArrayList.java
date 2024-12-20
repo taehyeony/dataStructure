@@ -52,6 +52,15 @@ public class ArrayList {
     }
 
     /**
+     * 특정 위치의 요소를 반환하는 함수
+     * @param index 가져올 요소의 위치
+     * @return 해당 index에 해당하는 요소, 만약 가져올 요소가 없으면 false 반환
+     */
+    public Object get(int index) {
+        return elements[index];
+    }
+
+    /**
      * ArrayList가 가득 찼는지 확인하는 함수
      * @return ArrayList가 가득차면 true 아니면 false
      */

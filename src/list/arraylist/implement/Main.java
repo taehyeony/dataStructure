@@ -24,5 +24,9 @@ public class Main {
         System.out.println("\nremove(인덱스)");
         System.out.println(list.remove(2));
         System.out.println(list);
+
+        //데이터 가져오기
+        System.out.println("\nget(인덱스)");
+        System.out.println(list.get(2));
     }
 }
