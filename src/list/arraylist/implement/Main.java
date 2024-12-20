@@ -1,5 +1,7 @@
 package list.arraylist.implement;
 
+import java.util.ListIterator;
+
 /**
  * 구현한 ArrayList의 기능을 확인하는 Main 클래스 
  */
@@ -36,5 +38,24 @@ public class Main {
         //특정 문자열 찾기
         System.out.println("\nindexOf()");
         System.out.println(list.indexOf(30));
+
+        //Iterator를 이용한 순회
+        ListIterator iterator = list.listIterator();
+        System.out.println("\niterator를 이용한 순회");
+        System.out.println(list);
+        while (iterator.hasNext()) {
+            iterator.set((int)iterator.next()*2);
+        }
+        System.out.println(list);
+        while(iterator.hasPrevious()) {
+            iterator.set((int)iterator.previous()*2);
+        }
+        System.out.println(list);
+
+        //for-each를 이용한 순회
+        System.out.println("\nfor-each를 이용한 순회");
+        for(Object element : list) {
+            System.out.println(element);
+        }
     }
 }

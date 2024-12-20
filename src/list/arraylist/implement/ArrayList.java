@@ -1,13 +1,78 @@
 package list.arraylist.implement;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 /**
  * ArrayList 구현
  * 동적으로 크기를 변경하지 않으며 고정적인 크기(100)의 배열로 요소를 관리하는 자료 구조
  */
-public class ArrayList {
+public class ArrayList implements Iterable {
     private final int size = 100; //ArrayList 크기
     private int index = 0; //현재 ArrayList에 들어있는 데이터의 수
     private Object[] elements = new Object[size]; //데이터를 담을 배열
+
+    public Iterator iterator() {
+        return listIterator();
+    }
+
+    public ListIterator listIterator() {
+        return new ListIterator() {
+            private int nextIndex = 0;
+            private int flag = 0;
+
+            @Override
+            public boolean hasNext() {
+                return nextIndex < index;
+            }
+
+            @Override
+            public Object next() {
+                flag = 1;
+                return elements[nextIndex++];
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return nextIndex > 0;
+            }
+
+            @Override
+            public Object previous() {
+                flag = -1;
+                return elements[--nextIndex];
+            }
+
+            @Override
+            public int nextIndex() {
+                return nextIndex;
+            }
+
+            @Override
+            public int previousIndex() {
+                return nextIndex - 1;
+            }
+
+            @Override
+            public void remove() {
+                ArrayList.this.remove(nextIndex);
+            }
+
+            @Override
+            public void set(Object o) {
+                if(flag == 0) return;
+                else if(flag == 1)elements[nextIndex-1] = o;
+                else elements[nextIndex] = o;
+            }
+
+            @Override
+            public void add(Object o) {
+                ArrayList.this.add(nextIndex++, o);
+            }
+        };
+    }
+
+
 
     /**
      * 끝에 요소를 추가하는 함수

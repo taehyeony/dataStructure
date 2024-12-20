@@ -42,13 +42,13 @@ public class Main {
 
         //Iterator를 이용한 순회
         Iterator<Integer> iterator = numbers.iterator();
-        System.out.println("iterator를 이용한 순회");
+        System.out.println("\niterator를 이용한 순회");
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
 
         //for-each를 이용한 순회
-        System.out.println("for-each를 이용한 순회");
+        System.out.println("\nfor-each를 이용한 순회");
         for(Integer number : numbers) {
             System.out.println(number);
         }
