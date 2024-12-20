@@ -28,5 +28,13 @@ public class Main {
         //데이터 가져오기
         System.out.println("\nget(인덱스)");
         System.out.println(list.get(2));
+
+        //ArrayList 크기
+        System.out.println("\nsize()");
+        System.out.println(list.size());
+
+        //특정 문자열 찾기
+        System.out.println("\nindexOf()");
+        System.out.println(list.indexOf(30));
     }
 }

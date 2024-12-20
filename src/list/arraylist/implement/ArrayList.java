@@ -61,6 +61,26 @@ public class ArrayList {
     }
 
     /**
+     * ArrayList의 크기를 반환하는 함수
+     * @return ArrayList의 크기
+     */
+    public int size() {
+        return index;
+    }
+
+    /**
+     * 특정 요소가 저장된 위치를 반환하는 함수
+     * @param element 찾을 요소
+     * @return 찾을 요소가 저장된 index, 만약 찾을 요소가 ArrayList에 존재하지 않으면 -1 반환
+     */
+    public int indexOf(Object element) {
+        for(int i = 0; i < index; i++) {
+            if(element.equals(elements[i])) return i;
+        }
+        return -1;
+    }
+
+    /**
      * ArrayList가 가득 찼는지 확인하는 함수
      * @return ArrayList가 가득차면 true 아니면 false
      */
