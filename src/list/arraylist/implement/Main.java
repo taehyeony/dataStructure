@@ -8,7 +8,7 @@ import java.util.ListIterator;
 public class Main {
     public static void main(String[] args) {
         //ArrayList 객체 생성
-        ArrayList list = new ArrayList();
+        ArrayList<Integer> list = new ArrayList<>();
         
         //데이터 추가
         list.add(10);
@@ -40,7 +40,7 @@ public class Main {
         System.out.println(list.indexOf(30));
 
         //Iterator를 이용한 순회
-        ListIterator iterator = list.listIterator();
+        ListIterator<Integer> iterator = list.listIterator();
         System.out.println("\niterator를 이용한 순회");
         System.out.println(list);
         while (iterator.hasNext()) {

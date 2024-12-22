@@ -7,17 +7,19 @@ import java.util.ListIterator;
  * ArrayList 구현
  * 동적으로 크기를 변경하지 않으며 고정적인 크기(100)의 배열로 요소를 관리하는 자료 구조
  */
-public class ArrayList implements Iterable {
+public class ArrayList<T> implements Iterable<T> {
     private final int size = 100; //ArrayList 크기
     private int index = 0; //현재 ArrayList에 들어있는 데이터의 수
-    private Object[] elements = new Object[size]; //데이터를 담을 배열
+    @SuppressWarnings("unchecked")
+    private final T[] elements = (T[]) new Object[size]; //데이터를 담을 배열
 
-    public Iterator iterator() {
+    @Override
+    public Iterator<T> iterator() {
         return listIterator();
     }
 
-    public ListIterator listIterator() {
-        return new ListIterator() {
+    public ListIterator<T> listIterator() {
+        return new ListIterator<T>() {
             private int nextIndex = 0;
             private int flag = 0;
 
@@ -27,7 +29,7 @@ public class ArrayList implements Iterable {
             }
 
             @Override
-            public Object next() {
+            public T next() {
                 flag = 1;
                 return elements[nextIndex++];
             }
@@ -38,7 +40,7 @@ public class ArrayList implements Iterable {
             }
 
             @Override
-            public Object previous() {
+            public T previous() {
                 flag = -1;
                 return elements[--nextIndex];
             }
@@ -59,15 +61,15 @@ public class ArrayList implements Iterable {
             }
 
             @Override
-            public void set(Object o) {
+            public void set(T t) {
                 if(flag == 0) return;
-                else if(flag == 1)elements[nextIndex-1] = o;
-                else elements[nextIndex] = o;
+                else if(flag == 1)elements[nextIndex-1] = t;
+                else elements[nextIndex] = t;
             }
 
             @Override
-            public void add(Object o) {
-                ArrayList.this.add(nextIndex++, o);
+            public void add(T t) {
+                ArrayList.this.add(nextIndex++, t);
             }
         };
     }
@@ -76,10 +78,10 @@ public class ArrayList implements Iterable {
 
     /**
      * 끝에 요소를 추가하는 함수
-     * @param element 추가할 요소 
+     * @param element 추가할 요소
      * @return 성공 여부
      */
-    public boolean add(Object element) {
+    public boolean add(T element) {
         if(isFull()) return false;
         elements[index++] = element;
         return true;
@@ -91,7 +93,7 @@ public class ArrayList implements Iterable {
      * @param element 추가할 요소
      * @return 성공 여부
      */
-    public boolean add(Integer index, Object element) {
+    public boolean add(Integer index, T element) {
         if(isFull()) return false;
         for(int i = this.index; i > index; i--) {
             elements[i] = elements[i-1];
@@ -138,7 +140,7 @@ public class ArrayList implements Iterable {
      * @param element 찾을 요소
      * @return 찾을 요소가 저장된 index, 만약 찾을 요소가 ArrayList에 존재하지 않으면 -1 반환
      */
-    public int indexOf(Object element) {
+    public int indexOf(T element) {
         for(int i = 0; i < index; i++) {
             if(element.equals(elements[i])) return i;
         }
